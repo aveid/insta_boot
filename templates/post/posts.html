@@ -15,6 +15,7 @@
       <th scope="col">Описание постов</th>
       <th scope="col">Хештеги</th>
       <th scope="col">Изображение</th>
+      <th scope="col">Переход</th>
     </tr>
   </thead>
   <tbody>
@@ -22,7 +23,7 @@
     <tr>
       <th scope="row">{{post.id}}</th>
       <td>{{post.author.full_name}}</td>
-      <td>{{post.title}}</td>
+      <td><a href="{% url 'detail_post' post.id %}">{{post.title}}</td>
       <td>{{post.description|truncatechars:50}}</td>
 
       <td>
@@ -31,6 +32,7 @@
       {%endfor%}
       </td>
       <td><img src="{{post.images.first.image.url}}" height="100px" width="100px" alt="{{post.images.first.title}}"></td>
+      <td><a href="{% url 'detail_post' post.id %}" class="btn btn-primary">Перейти</a></td>
     </tr>
   {%endfor%}
   </tbody>
