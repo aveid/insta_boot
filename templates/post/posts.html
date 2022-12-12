@@ -23,9 +23,14 @@
       <th scope="row">{{post.id}}</th>
       <td>{{post.author.full_name}}</td>
       <td>{{post.title}}</td>
-      <td>{{post.description}}</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td>{{post.description|truncatechars:50}}</td>
+
+      <td>
+        {% for hash in post.hashtag_set.all%}
+        {{hash.title}}
+      {%endfor%}
+      </td>
+      <td><img src="{{post.images.first.image.url}}" height="100px" width="100px" alt="{{post.images.first.title}}"></td>
     </tr>
   {%endfor%}
   </tbody>
